@@ -1,5 +1,23 @@
 ![alt text](image.png)
 
+
+# Executar a aplicação em dev
+
+`./mvnw spring-boot:run -Dspring-boot.run.profiles=dev`
+
+# Executar a aplicação dem prod
+
+`./mvnw spring-boot:run -Dspring-boot.run.profiles=prd`
+
+# Banco h2
+
+`http://localhost:8080/h2-console/`
+
+# Documentação 
+
+`http://localhost:8080/swagger-ui/index.html`
+
+
 # Estruturando objetos json
 
 ```
@@ -70,9 +88,9 @@ classDiagram
         +String description
     }
 
-    Client --> Account
-    Client --> Feature
-    Client --> Card
-    Client --> News
+    Client "1" *-- "1" Account
+    Client "1" *-- "1..N" Feature
+    Client "1" *-- "1" Card
+    Client "1" *-- "1..N" News
 
 ```
