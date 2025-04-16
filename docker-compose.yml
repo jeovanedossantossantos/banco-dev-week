@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: sdw2023
+      POSTGRES_USER: sdw2023
+      POSTGRES_PASSWORD: 
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: sdw2023
+      PGUSER: sdw2023
+      PGPASSWORD: 
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
